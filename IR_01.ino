@@ -3,7 +3,7 @@
 #include <sstream>      // std::stringstream
 
 //Sensor
-int digitalPin = P12;
+int digitalPin = 12;
 char IR_data[50];
 int value;
 
@@ -29,20 +29,24 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.print((char)payload[i]);
   }
 
-  if (topic == topic_sub)
-  {
-    Serial.println("IR_Data");
-    pubSensor();
-  }
+  // if (topic == topic_sub)
+  // {
+  //   Serial.println("IR_data");
+  //   pubSensor();
+  // }
+  
+  Serial.println("IR_data");
+  pubSensor();
+  
 }
 
 void pubSensor(){
 
   sprintf(IR_data, "%c", value);
   if(!value){
-    client.publish(pubTopic, "Empty"); 
+    mqttClient.publish(topic_pub, "Empty"); 
   }
-  else client.publish(pubTopic, "Using"); 
+  else mqttClient.publish(topic_pub, "Using"); 
     Serial.println("publish");
 }
 
@@ -51,7 +55,6 @@ void setup() {
 
   //Sensor
   pinMode(digitalPin, INPUT);
-  value = digitalRead(digitalPin);
 
   // Set software serial baud to 115200;
   Serial.begin(115200);
@@ -84,6 +87,6 @@ void setup() {
 
 void loop() {
   value = digitalRead(digitalPin);
+  //Serial.println(value);
   mqttClient.loop();
-  }
 }
