@@ -7,7 +7,7 @@ int digitalPin = P12;
 
 //Wifi
 const char* ssid = "이창용’s iPhone";
-const char* password =  "qkdghk3122";
+const char* password =  001;
 
 //MQTT Broker
 const char* mqttServer = "34.125.39.205";
