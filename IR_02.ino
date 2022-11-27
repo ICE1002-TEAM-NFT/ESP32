@@ -12,10 +12,10 @@ int value;
 
 //Wifi
 const char* ssid = "이창용’s iPhone";
-const char* password =  "qkdghk3122";
+const char* password =  "";
 
 //MQTT Broker
-const char* mqttServer = "35.199.162.143";
+const char* mqttServer = "";
 const int mqttPort = 1883;
 const char* topic_sub = "esp32/IR/get";
 const char* topic_pub = "esp32/IR";
