@@ -135,8 +135,9 @@ void pubLoop ( void *param )
   while (1)
   {
   value = digitalRead(digitalPin);
-
-  mqttClient.publish(topic_pub, "435, Empty");
+    
+  pubSensor();
+  // mqttClient.publish(topic_pub, "435, Empty");
   Serial.println("publish_0");
   vTaskDelay(10000);
   }
